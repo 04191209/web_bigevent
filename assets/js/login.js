@@ -74,8 +74,11 @@ $(function() {
             //console.log(data2);
 
         //$.post('http://api-breakingnews-web.itheima.net/api/login', data2,
-        $.post('/api/login', data2,
-            function(res) {
+        $.ajax({
+            url: '/api/login',
+            method: 'POST',
+            data: $(this).serialize(),
+            success: function(res) {
                 if (res.status !== 0) {
                     //return console.log('登录错误');
                     return layer.msg(res.message)
@@ -84,17 +87,20 @@ $(function() {
                 }
                 //console.log('登录成功');
                 layer.msg('登录成功')
+                console.log(res);
 
-                //tocke为管理员才拥有的值
+                var token1 = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsInVzZXJuYW1lIjoiMTIzIiwicGFzc3dvcmQiOiIiLCJuaWNrbmFtZSI6IiIsImVtYWlsIjoiIiwidXNlcl9waWMiOiIiLCJpYXQiOjE2NTA4MTI5ODQsImV4cCI6MTY1MDg0ODk4NH0.aiCzuz30cgXjCky3a1_MYaPmaEHaWtqJiR5j2nvdJQA'
+                    //tocke为管理员才拥有的值
                 localStorage.setItem('token', res.token); //a1 111111新的后端管理员不知道密码
                 //管理员的token：Authorization:Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsInBhc3N3b3JkIjoiIiwibmlja25hbWUiOiLms6Xlt7Tlt7QiLCJlbWFpbCI6Im5pYmFiYUBpdGNhc3QuY24iLCJ1c2VyX3BpYyI6IiIsImlhdCI6MTU3ODAzNjY4MiwiZXhwIjoxNTc4MDcyNjgyfQ.Mwq7GqCxJPK-EA8LNrtMG04llKdZ33S9KBL3XeuBxuI
 
 
                 //跳转到后台主页
-                location.href = '/index.html'
+                location.href = './index.html'
 
-            })
+
+            }
+        })
     })
-
 
 })
