@@ -37,7 +37,7 @@ function getUserInfo() {
 
         // },
         success: function(res) {
-            console.log(res);
+            //console.log(res);
             if (res.status !== 0) {
                 return layui.layer.msg('获取用户信息失败')
             }
@@ -72,18 +72,20 @@ function readerAvatar(user) {
         //3 按需渲染头像
     if (user.user_pic !== null) {
         // attr设置值
-        $('.layui-nav-img').attr('src', user.user_pic).show
+        $('.text-avatar').hide()
+        $('.layui-nav-img').attr('src', user.user_pic).show()
+
 
     } else {
         // 渲染文本头像
         $('.layui-nav-img').hide()
             //转化为大写
-        console.log(name);
+            //console.log(name);
 
         var first = name[0].toUpperCase()
-        console.log(first);
+            //console.log(first);
 
-        $('.text-avater').html(first).show()
+        $('.text-avatar').html(first).show()
 
     }
 }
