@@ -40,7 +40,7 @@ $(function() {
     })
 
     //最终裁剪后的图片存放在$image中,toDataURl转化为数字让后端把数字转化为
-    //真实图片
+    //真实图片转化数字：网址https://www.css-js.com/tools/base64.html
 
 
     //为确定按钮，绑定点击上传图片事件
